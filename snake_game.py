@@ -38,13 +38,13 @@ class snake_game:
 		is_hit = 0
 
 		# Check Key Press Event; Validate if it doesnot reverse direction
-		if((key == ord('a') or key == ord('j')) and self.direction != 1):										
+		if((key == ord('a') or key == ord('j') or key == ord('A') or key == ord('J')) and self.direction != 1):										
 			self.direction = -1
-		elif((key == ord('s') or key == ord('k')) and self.direction != -2):
+		elif((key == ord('s') or key == ord('k') or key == ord('S') or key == ord('K')) and self.direction != -2):
 			self.direction = 2
-		elif((key == ord('d') or key == ord('l')) and self.direction != -1):
+		elif((key == ord('d') or key == ord('l') or key == ord('D') or key == ord('L')) and self.direction != -1):
 			self.direction = 1
-		elif((key == ord('w') or key == ord('i')) and self.direction != -2):
+		elif((key == ord('w') or key == ord('i') or key == ord('W') or key == ord('I')) and self.direction != -2):
 			self.direction = -2
 
 		if(self.direction == -1):
