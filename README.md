@@ -28,3 +28,6 @@ Run using python3 or python <br>
 <br>
 * Set AI_MODE = 1 in `init.py` and play Snake Game in Auto Mode<br>
 Play Snake Game with AI with A* Algorithm <br>
+
+<img src="AI_Mode.gif" width="600" text="AI Mode"></br>
+

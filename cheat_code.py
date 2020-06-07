@@ -1,9 +1,6 @@
 from init import *
 import networkx as nx
 
-grid_x = (width  // unit_block)
-grid_y = (height  // unit_block)
-
 class cheat_code:
 	def __init__(self):
 		self.astar_route = np.empty(shape = (0, 0))
@@ -24,8 +21,8 @@ class cheat_code:
 
 	def hack(self, snake, food):
 		if(self.astar_route.shape[0] == 0):
-			start = (snake[0][0] // unit_block, snake[0][1] // unit_block) 
-			end   = (food[0] // unit_block, food[1] // unit_block) 
+			start = (snake[0][0] // UNIT_BLOCK, snake[0][1] // UNIT_BLOCK) 
+			end   = (food[0] // UNIT_BLOCK, food[1] // UNIT_BLOCK) 
 			self.route(start, end) 
 
 		if(self.astar_route[0] == [1, 0]).all():
