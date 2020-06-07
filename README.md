@@ -23,3 +23,8 @@ Run using python3 or python <br>
 * S or K for doown <br>
 * D or L for right <br>
 * W or I for up <br>
+
+**Cheat Code for Snake Game** 
+<br>
+* Set AI_MODE = 1 in `init.py` and play Snake Game in Auto Mode<br>
+Play Snake Game with AI with A* Algorithm <br>

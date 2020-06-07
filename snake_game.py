@@ -2,12 +2,14 @@ from init import *
 
 class snake_game:
 	def __init__(self):
-		self.snake_points = np.zeros((snake_length, 2)) 
+		self.snake_points = np.zeros((snake_length, 2), dtype = int) 
 		# Space Available for Snake Head and Food
 		self.space_x = screen_width - unit_block - 1															
 		self.space_y = screen_height - unit_block - 1
 		self.direction = -1
 		self.score = 0
+		if(self.space_x <= 0 or self.space_y <= 0):
+			print("Inconsistent Initilization Values")			
 		for i in range(snake_length):
 			self.snake_points[i][0] = (int(self.space_x/2) // unit_block + i) * unit_block
 			self.snake_points[i][1] = (int(self.space_y/2) // unit_block) * unit_block
@@ -15,13 +17,14 @@ class snake_game:
 	# Random Food Location
 	def generate_food(self):																					
 		self.food_x = (random.randint(0, self.space_x) // unit_block) * unit_block
-		self.food_y = (random.randint(0, self.space_y) // unit_block) * unit_block	
+		self.food_y = (random.randint(0, self.space_y) // unit_block) * unit_block
+		self.food = np.array([self.food_x, self.food_y])	
 
 	# Draw Snake and Food
 	def refresh_screen(self, image):																			
 		for i in range(snake_length):
-			image = cv2.rectangle(image, (int(self.snake_points[i][0]),int(self.snake_points[i][1])), (int(self.snake_points[i][0]+unit_block),int(self.snake_points[i][1]+unit_block)), (0, 255, 0), -1) 
-		image = cv2.rectangle(image, (self.food_x, self.food_y), (self.food_x + unit_block, self.food_y + unit_block), (0, 0, 255), -1) 
+			image = cv2.rectangle(image, (int(self.snake_points[i][0]),int(self.snake_points[i][1])), (int(self.snake_points[i][0]+unit_block),int(self.snake_points[i][1]+unit_block)), GREEN, -1) 
+		image = cv2.rectangle(image, (self.food_x, self.food_y), (self.food_x + unit_block, self.food_y + unit_block), RED, -1) 
 
 	# End Game
 	def end_game(self, image):
@@ -38,14 +41,14 @@ class snake_game:
 		is_hit = 0
 
 		# Check Key Press Event; Validate if it doesnot reverse direction
-		if((key == ord('a') or key == ord('j') or key == ord('A') or key == ord('J')) and self.direction != 1):										
-			self.direction = -1
-		elif((key == ord('s') or key == ord('k') or key == ord('S') or key == ord('K')) and self.direction != -2):
-			self.direction = 2
-		elif((key == ord('d') or key == ord('l') or key == ord('D') or key == ord('L')) and self.direction != -1):
-			self.direction = 1
-		elif((key == ord('w') or key == ord('i') or key == ord('W') or key == ord('I')) and self.direction != -2):
-			self.direction = -2
+		if((key == ord('a') or key == ord('j') or key == ord('A') or key == ord('J')) 	):		#and self.direction != RIGHT):										
+			self.direction = LEFT
+		elif((key == ord('s') or key == ord('k') or key == ord('S') or key == ord('K')) ):		#and self.direction != UP):
+			self.direction = DOWN
+		elif((key == ord('d') or key == ord('l') or key == ord('D') or key == ord('L')) ):		#and self.direction != LEFT):
+			self.direction = RIGHT
+		elif((key == ord('w') or key == ord('i') or key == ord('W') or key == ord('I')) ):		#and self.direction != DOWN):
+			self.direction = UP
 
 		if(self.direction == -1):
 			snake_x = snake_x - unit_block
@@ -56,11 +59,11 @@ class snake_game:
 		elif(self.direction == -2):
 			snake_y = snake_y - unit_block
 			
-		for i in range(snake_length):
-			if(self.snake_points[i, 0] == snake_x and self.snake_points[i, 1] == snake_y):
-				is_hit = 1
+		#for i in range(snake_length):
+		#	if(self.snake_points[i, 0] == snake_x and self.snake_points[i, 1] == snake_y):
+		#		is_hit = 1
 		is_boundary_hit = (snake_x < 0 or snake_y < 0 or snake_x >= screen_width or snake_y >= screen_height)
-		is_exit = (key == 27)
+		is_exit = (key == EXIT_KEY)
 
 		# Reached Boundaries or Pressed Exit Key or Hit self
 		if(is_boundary_hit or is_exit or is_hit):	
