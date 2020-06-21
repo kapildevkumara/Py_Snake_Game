@@ -13,7 +13,7 @@ MIN_TIME = 125			# Minimum Wait Time
 INC_LEVEL = 5			# Increment Level
 SNAKE_LENGTH = 10		# Snake Length
 EXIT_KEY = 27 			# Escape Key
-AI_MODE = 1				# A-Star Algorithm Mode (1) and Normal Mode (0)
+AI_MODE = 0				# A-Star Algorithm Mode (1) and Normal Mode (0)
 
 GREEN = (0, 255, 0)		
 RED = (0, 0, 255)		

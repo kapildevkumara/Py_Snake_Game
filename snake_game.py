@@ -41,27 +41,28 @@ class snake_game:
 		is_hit = 0
 
 		# Check Key Press Event; Validate if it doesnot reverse direction
-		if((key == ord('a') or key == ord('j') or key == ord('A') or key == ord('J')) 	):		#and self.direction != RIGHT):										
+		if((key == ord('a') or key == ord('j') or key == ord('A') or key == ord('J')) 	and (AI_MODE or self.direction != RIGHT)):											
 			self.direction = LEFT
-		elif((key == ord('s') or key == ord('k') or key == ord('S') or key == ord('K')) ):		#and self.direction != UP):
+		elif((key == ord('s') or key == ord('k') or key == ord('S') or key == ord('K')) and (AI_MODE or self.direction != UP)):
 			self.direction = DOWN
-		elif((key == ord('d') or key == ord('l') or key == ord('D') or key == ord('L')) ):		#and self.direction != LEFT):
+		elif((key == ord('d') or key == ord('l') or key == ord('D') or key == ord('L')) and (AI_MODE or self.direction != LEFT)):
 			self.direction = RIGHT
-		elif((key == ord('w') or key == ord('i') or key == ord('W') or key == ord('I')) ):		#and self.direction != DOWN):
+		elif((key == ord('w') or key == ord('i') or key == ord('W') or key == ord('I')) and (AI_MODE or self.direction != DOWN)):
 			self.direction = UP
 
-		if(self.direction == -1):
+		if(self.direction == LEFT):
 			snake_x = snake_x - UNIT_BLOCK
-		elif(self.direction == 2):
+		elif(self.direction == DOWN):
 			snake_y = snake_y + UNIT_BLOCK
-		elif(self.direction == 1):
+		elif(self.direction == RIGHT):
 			snake_x = snake_x + UNIT_BLOCK
-		elif(self.direction == -2):
+		elif(self.direction == UP):
 			snake_y = snake_y - UNIT_BLOCK
 			
-		#for i in range(SNAKE_LENGTH):
-		#	if(self.snake_points[i, 0] == snake_x and self.snake_points[i, 1] == snake_y):
-		#		is_hit = 1
+		for i in range(SNAKE_LENGTH):
+			if(not AI_MODE and self.snake_points[i, 0] == snake_x and self.snake_points[i, 1] == snake_y):
+				is_hit = 1
+
 		is_boundary_hit = (snake_x < 0 or snake_y < 0 or snake_x >= screen_width or snake_y >= screen_height)
 		is_exit = (key == EXIT_KEY)
 
