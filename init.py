@@ -5,6 +5,7 @@ import random
 import numpy as np
 
 # Globals
+
 WIDTH = 600				# Display Resolution Width 
 HEIGHT = 600			# Display Resolution Height
 UNIT_BLOCK = 20			# Grid Size

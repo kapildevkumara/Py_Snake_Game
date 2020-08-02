@@ -32,4 +32,3 @@ Run using python3 or python <br>
 Play Snake Game with AI with A* and Grassfire Algorithms<br>
 
 <img src="AI_Mode.gif" width="600" text="AI Mode"></br>
-
