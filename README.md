@@ -11,6 +11,8 @@ Reviving Nokia 6110 Snake Game with Python
 
 2. Install Numpy and OpenCV <br>
 `pip install opencv-python`
+<br>Optional
+`pip install networkx` 
 
 **Usage** <br>
 Run using python3 or python <br>
@@ -27,7 +29,7 @@ Run using python3 or python <br>
 **Cheat Code for Snake Game** 
 <br>
 * Set AI_MODE = 1 in `init.py` and play Snake Game in Auto Mode<br>
-Play Snake Game with AI with A* Algorithm <br>
+Play Snake Game with AI with A* and Grassfire Algorithms<br>
 
 <img src="AI_Mode.gif" width="600" text="AI Mode"></br>
 
