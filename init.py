@@ -5,13 +5,26 @@ import random
 import numpy as np
 
 # Globals
-width = 600
-height = 600
-unit_block = 20
-pause_time = 250
-inc_level = 5
-snake_length = 10
 
-screen_width  = (width  // unit_block)  * unit_block
-screen_height = (height // unit_block) * unit_block
+WIDTH = 600				# Display Resolution Width 
+HEIGHT = 600			# Display Resolution Height
+UNIT_BLOCK = 20			# Grid Size
+PAUSE_TIME = 250		# Initial Pause Time 
+MIN_TIME = 125			# Minimum Wait Time
+INC_LEVEL = 5			# Increment Level
+SNAKE_LENGTH = 10		# Snake Length
+EXIT_KEY = 27 			# Escape Key
+AI_MODE = 1				# Computer's Chance to Play with Mode (1) and You Can Play with Mode (0)
 
+GREEN = (0, 255, 0)		
+RED = (0, 0, 255)		
+LEFT = -1				
+UP = -2					
+RIGHT = 1				
+DOWN = 2				
+
+grid_x = (WIDTH//UNIT_BLOCK)
+grid_y = (HEIGHT//UNIT_BLOCK)
+
+screen_width = grid_x * UNIT_BLOCK
+screen_height = grid_y * UNIT_BLOCK
